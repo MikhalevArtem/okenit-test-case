@@ -7,7 +7,7 @@ import { POSTS } from "@/api.js";
 
 export default {
   state: () => ({
-    data: null,
+    data: [],
     isLoading: false,
     error: null,
   }),
@@ -27,11 +27,14 @@ export default {
     },
   },
   actions: {
-    async fetchPosts({ commit }, userId = null) {
+    async fetchPosts({ commit }, payload) {
       try {
         const url = new URL(POSTS);
-        if (userId) {
-          url.searchParams.set("userId", userId);
+        if (payload?.userId) {
+          url.searchParams.set("userId", payload.userId);
+        }
+        if (payload?.postId) {
+          url.searchParams.set("id", payload.postId);
         }
         commit(FETCH_POSTS_REQUEST);
         let response = await fetch(url);

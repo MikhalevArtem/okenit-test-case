@@ -22,17 +22,14 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchUsers", "fetchPosts"]),
+    ...mapActions(["fetchPosts"]),
   },
   computed: {
     ...mapGetters(["getUsersData", "getUsersIsLoading"]),
   },
-  mounted() {
-    this.fetchUsers();
-  },
   watch: {
     value(newValue) {
-      this.fetchPosts(newValue);
+      this.fetchPosts({ userId: newValue });
     },
   },
 };

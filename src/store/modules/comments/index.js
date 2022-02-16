@@ -76,5 +76,8 @@ export default {
     getCommentAnswer(state) {
       return state.commentAnswer;
     },
+    getCommentsError(state) {
+      return state.error;
+    },
   },
 };

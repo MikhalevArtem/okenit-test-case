@@ -1,5 +1,6 @@
 <template>
-  <div class="layaut">
+  <Error v-if="getUsersError || getPostsError || getCommentsError" />
+  <div v-else class="layaut">
     <Header />
     <Container>
       <slot></slot>
@@ -9,11 +10,17 @@
 <script>
 import Header from "../Header/Header.vue";
 import Container from "../Container/Container.vue";
+import Error from "../Error/Error.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "Layaut",
   components: {
     Header,
     Container,
+    Error,
+  },
+  computed: {
+    ...mapGetters(["getUsersError", "getPostsError", "getCommentsError"]),
   },
 };
 </script>

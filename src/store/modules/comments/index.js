@@ -58,10 +58,14 @@ export default {
           throw new Error("network error");
         }
         let result = await response.json();
-        console.log(result);
       } catch (err) {
         commit(FETCH_COMMENTS_FAILURE, err.message);
       }
+    },
+  },
+  getters: {
+    getComments(state) {
+      return state.commentsData;
     },
   },
 };

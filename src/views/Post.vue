@@ -21,19 +21,23 @@
         <div class="flex xs12">
           <Comment />
         </div>
+        <div class="flex xs12">
+          <CommentList />
+        </div>
       </div>
     </div>
   </Layaut>
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
-import { Layaut, UserCard, Comment } from "@/components";
+import { Layaut, UserCard, Comment, CommentList } from "@/components";
 export default {
   name: "Post",
   components: {
     Layaut,
     UserCard,
     Comment,
+    CommentList,
   },
   methods: {
     ...mapActions(["fetchPosts", "fetchUsers"]),

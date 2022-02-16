@@ -29,10 +29,19 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "CommentList",
   computed: {
-    ...mapGetters(["getComments"]),
+    ...mapGetters(["getComments", "getCommentAnswer"]),
   },
   methods: {
     ...mapActions(["fetchComments"]),
+  },
+  watch: {
+    getCommentAnswer(newAnswer) {
+      this.$vaToast.init({
+        message: `id your comment: ${newAnswer.id}`,
+        color: "primary",
+        position: "top-right",
+      });
+    },
   },
   mounted() {
     this.fetchComments(this.$route.params.id);

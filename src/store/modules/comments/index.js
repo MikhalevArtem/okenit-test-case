@@ -3,6 +3,7 @@ import {
   FETCH_COMMENTS_REQUEST,
   FETCH_COMMENTS_SUCCESS,
   FETCH_COMMENTS_FAILURE,
+  SEND_COMMENT_SUCCESS,
 } from "./mutationsTypes";
 
 export default {
@@ -11,6 +12,7 @@ export default {
       isLoading: false,
       commentsData: [],
       error: null,
+      commentAnswer: null,
     };
   },
   mutations: {
@@ -26,6 +28,9 @@ export default {
     [FETCH_COMMENTS_FAILURE](state, error) {
       state.isLoading = false;
       state.error = error;
+    },
+    [SEND_COMMENT_SUCCESS](state, data) {
+      state.commentAnswer = data;
     },
   },
   actions: {
@@ -58,6 +63,7 @@ export default {
           throw new Error("network error");
         }
         let result = await response.json();
+        commit(SEND_COMMENT_SUCCESS, result);
       } catch (err) {
         commit(FETCH_COMMENTS_FAILURE, err.message);
       }
@@ -66,6 +72,9 @@ export default {
   getters: {
     getComments(state) {
       return state.commentsData;
+    },
+    getCommentAnswer(state) {
+      return state.commentAnswer;
     },
   },
 };

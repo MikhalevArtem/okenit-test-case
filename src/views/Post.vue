@@ -18,18 +18,22 @@
         <div class="flex xs12 md4">
           <UserCard />
         </div>
+        <div class="flex xs12">
+          <Comment />
+        </div>
       </div>
     </div>
   </Layaut>
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
-import { Layaut, UserCard } from "@/components";
+import { Layaut, UserCard, Comment } from "@/components";
 export default {
   name: "Post",
   components: {
     Layaut,
     UserCard,
+    Comment,
   },
   methods: {
     ...mapActions(["fetchPosts", "fetchUsers"]),

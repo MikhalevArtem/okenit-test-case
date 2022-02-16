@@ -1,15 +1,17 @@
 <template>
   <Layaut>
+    <UserSelect></UserSelect>
     <PostList></PostList>
   </Layaut>
 </template>
 <script>
-import { Layaut, PostList } from "@/components";
+import { Layaut, PostList, UserSelect } from "@/components";
 export default {
   name: "Main",
   components: {
     Layaut,
     PostList,
+    UserSelect,
   },
 };
 </script>

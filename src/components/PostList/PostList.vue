@@ -3,12 +3,17 @@
     <va-list>
       <va-list-label> Posts </va-list-label>
 
-      <va-list-item v-for="post in getPostsData" :key="post.id">
+      <va-list-item
+        class="post"
+        v-for="post in getPostsData"
+        :key="post.id"
+        @click="this.$router.push({ path: `/post/${post.id}` })"
+      >
         <va-list-item-section>
           <va-list-item-label>
             {{ post.title }}
           </va-list-item-label>
-          <va-list-item-label caption>
+          <va-list-item-label caption :lines="10">
             {{ post.body }}
           </va-list-item-label>
         </va-list-item-section>
@@ -31,4 +36,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style scoped>
+.post:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+</style>
